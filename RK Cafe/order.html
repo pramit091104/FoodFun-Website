@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Order Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Order Your Food</h2>
+
+        <!-- User Credentials -->
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Enter your address" required>
+
+        <h3>Select Your Menu</h3>
+
+        <!-- Food Menu -->
+        <div class="menu-item">
+            <label>🍕 Pizza - ₹200</label>
+            <input type="number" id="pizza" value="0" min="0">
+        </div>
+        <div class="menu-item">
+            <label>🍔 Burger - ₹100</label>
+            <input type="number" id="burger" value="0" min="0">
+        </div>
+        <div class="menu-item">
+            <label>🥤 Cold Drink - ₹50</label>
+            <input type="number" id="drink" value="0" min="0">
+        </div>
+
+        <button onclick="placeOrder()">Place Order</button>
+
+        <h3>Order Summary:</h3>
+        <p id="order-summary"></p>
+    </div>
+
+    <script>
+        function placeOrder() {
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let address = document.getElementById("address").value;
+            let pizzaQty = parseInt(document.getElementById("pizza").value);
+            let burgerQty = parseInt(document.getElementById("burger").value);
+            let drinkQty = parseInt(document.getElementById("drink").value);
+
+            let total = (pizzaQty * 200) + (burgerQty * 100) + (drinkQty * 50);
+
+            if (!name || !email || !address || total === 0) {
+                alert("Please enter valid details and select at least one item.");
+                return;
+            }
+
+            let orderSummary = `
+                Name: ${name} <br>
+                Email: ${email} <br>
+                Address: ${address} <br>
+                🍕 Pizza: ${pizzaQty} <br>
+                🍔 Burger: ${burgerQty} <br>
+                🥤 Cold Drink: ${drinkQty} <br>
+                <b>Total: ₹${total}</b>
+            `;
+
+            document.getElementById("order-summary").innerHTML = orderSummary;
+            alert("Order placed successfully!");
+        }
+    </script>
+
+</body>
+</html>
