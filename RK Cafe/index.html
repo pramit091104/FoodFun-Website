@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Link to Font Awesome CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Alex+Brush&family=Archivo:ital,wght@0,100..900;1,100..900&family=Chewy&family=Grape+Nuts&family=Great+Vibes&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mr+De+Haviland&family=Oswald:wght@200..700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +22,9 @@
             <div class="logo"></div>
 
             <div class="name">
-                <h1>RK Food & Cafe</h1>
+                <a href="index.html" id="name">
+                    <h1>RK Food & Cafe</h1>
+                </a>
             </div>
         </div>
 
@@ -30,7 +36,7 @@
                     <li><a href="#"><i class="fa-solid fa-user"></i></a></li>
                     <li><a href="#"><i class="fa-solid fa-phone"></i></a></li>
                     <li><a href="#"><button type="button" onclick="gotologin()">Log In</button></a></li>
-                </ul> 
+                </ul>
             </nav>
         </div>
     </header>
@@ -47,6 +53,18 @@
 
     <section class="menu">
         <h1>Our Menu</h1>
+        <div class="latest_menu">
+            <div class="latest" id="latest1"></div>
+            <div class="latest" id="latest2"></div>
+            <div class="latest" id="latest3"></div>
+            <div class="latest" id="latest4"></div>
+            <div class="latest" id="latest5"></div>
+            <div class="latest" id="latest6"></div>
+            <div class="latest" id="latest7"></div>
+            <div class="latest" id="latest8"></div>
+
+        </div>
+
         <div class="menu_items">
             <div class="item">
                 <img src="img/Chicken Burger.jpg" alt="Chicken Burger">
@@ -61,7 +79,7 @@
             <div class="item">
                 <img src="img/Chicken Pasta.jpg" alt="Chicken Pasta">
                 <h2>Chicken Pasta</h2>
-                <p>Price:   </p>
+                <p>Price: </p>
             </div>
             <div class="item">
                 <img src="img/Chicken Sandwhich.jpg" alt="Chicken Sandwich">
@@ -85,8 +103,18 @@
                 <a href="#"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
-    </footer>
 
+        <div class="location">
+            <p>This is the location of our Cafe, conveniently situated in the heart of the city. We are located near the
+                MIT Art, Design & Technology University,
+                making it an ideal spot for students and professionals to relax and enjoy a meal. Come visit us and
+                experience the best food and drinks in town!</p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d7567.769535998205!2d74.01741879206968!3d18.48887808039393!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e6!4m3!3m2!1d18.487705599999998!2d74.0196352!4m5!1s0x3bc2e805e62101f9%3A0x20beded1f9debf8d!2sMIT%20Art%2C%20Design%20%26%20Technology%20University%2C%20Railway%20station%2C%20MIT%20ADT%20Campus%2C%20Rajbaugh%2C%20Solapur%20-%20Pune%20Hwy%2C%20near%20Bharat%20Petrol%20Pump%2C%20Loni%20Kalbhor%2C%20Maharashtra%20412201!3m2!1d18.4900649!2d74.0254569!5e0!3m2!1sen!2sin!4v1739992567328!5m2!1sen!2sin"
+                width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </footer>
 
 
 
