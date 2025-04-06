@@ -1,9 +1,11 @@
-
 // DOM Elements
 const mobileMenuButton = document.querySelector('.mobile-menu-button');
 const mobileMenu = document.getElementById('mobileMenu');
 const header = document.querySelector('.header');
 const currentYearElement = document.getElementById('currentYear');
+const toggleBtn = document.getElementById('darkModeToggle');
+const searchButtonIcon = document.querySelector('.search-button .icon');
+const featuresContent = document.querySelector('.features-content'); // Correct selector for the section
 
 // Set current year in footer
 currentYearElement.textContent = new Date().getFullYear();
@@ -98,3 +100,39 @@ function filterMenuItems() {
 function redirectToMenu() {
   window.location.href = "menu.html";
 }
+
+toggleBtn.addEventListener('click', () => {
+  document.documentElement.classList.toggle('dark');
+  const header = document.querySelector('.header');
+  header.classList.toggle('dark'); // Add dark mode styling to the header
+
+  // Change the search icon color
+  if (document.documentElement.classList.contains('dark')) {
+    searchButtonIcon.style.stroke = '#fff'; // Set icon color to white in dark mode
+  } else {
+    searchButtonIcon.style.stroke = '#000'; // Set icon color to black in light mode
+  }
+
+  // Optional: Save user preference in localStorage
+  if (document.documentElement.classList.contains('dark')) {
+    localStorage.setItem('theme', 'dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+  }
+});
+
+// Load saved theme on page load
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.classList.add('dark');
+    const header = document.querySelector('.header');
+    header.classList.add('dark'); // Ensure header is in dark mode on page load
+    searchButtonIcon.style.stroke = '#fff'; // Set icon color to white on page load
+    if (featuresContent) {
+      featuresContent.classList.add('dark'); // Ensure section is in dark mode on page load
+    }
+  } else {
+    searchButtonIcon.style.stroke = '#000'; // Set icon color to black on page load
+  }
+});
+

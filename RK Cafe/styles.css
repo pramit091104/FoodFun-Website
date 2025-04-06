@@ -17,6 +17,7 @@
   --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
   --radius: 0.75rem;
   --transition: all 0.3s ease;
+  --icon-color: #000; /* Default icon color for light mode */
 }
 
 body {
@@ -165,6 +166,13 @@ img {
   padding: 12px 0;
 }
 
+/* Dark mode header styling */
+.header.dark {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
 .header-container {
   display: flex;
   justify-content: space-between;
@@ -225,7 +233,8 @@ img {
 }
 
 .search-button .icon {
-  stroke: #fff;
+  stroke: var(--icon-color);
+  transition: stroke 0.3s ease; /* Smooth transition for color change */
 }
 
 @media (min-width: 768px) {
@@ -770,3 +779,150 @@ img {
   padding-top: 24px;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+/* Dark MOde */
+
+/* Default Light Theme Variables */
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: #f4f4f4;
+  --btn-bg: #000000;
+  --btn-text: #ffffff;
+  --header-bg: #ffffff;
+  --footer-bg: #ffffff;
+  --input-bg: #ffffff;
+  --input-border: #ccc;
+  --link-color: #000000;
+  --divider-color: #e0e0e0;
+}
+
+/* Dark Theme Overrides */
+.dark {
+  --background-color: #121212;
+  --text-color: #f0f0f0;
+  --card-bg: #1e1e1e;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
+  --header-bg: #1e1e1e;
+  --footer-bg: #1e1e1e;
+  --input-bg: #2a2a2a;
+  --input-border: #444;
+  --link-color: #ff9e2c;
+  --divider-color: #333;
+  --icon-color: #fff; /* Icon color for dark mode */
+}
+
+/* Apply variables globally */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+header, footer {
+  background-color: var(--header-bg);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+input, textarea {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--link-color);
+  box-shadow: 0 0 0 2px rgba(255, 158, 44, 0.2);
+}
+
+hr {
+  border-color: var(--divider-color);
+}
+
+.dark-toggle-btn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 10px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.nav-link {
+  color: var(--text-color);
+}
+
+.nav-link::after {
+  background-color: var(--link-color);
+}
+
+.section-divider {
+  background-color: var(--link-color);
+}
+
+.search-input {
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--input-border);
+}
+
+.search-button {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+}
+
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--text-color);
+}
+
+.copyright {
+  border-top: 1px solid var(--divider-color);
+}
+
+/* Dark mode styling for the "Why People Choose Us" section */
+.why-choose-us.dark {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+/* Dark mode styling for the "Why People Choose Us" section */
+.features-content.dark {
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.features-content.dark .feature-card {
+  background-color: #444; /* Slightly lighter background for cards */
+  color: #fff;
+  border: 1px solid #555; /* Optional: Add a border for better contrast */
+}
+
+.features-content.dark .feature-card .feature-icon {
+  color: #ff6600; /* Highlight icons in dark mode */
+}
+
