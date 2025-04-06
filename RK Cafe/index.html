@@ -1,350 +1,456 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FoodFun Restaurant</title>
-    <meta name="description" content="Delicious food in a comfortable atmosphere" />
-    <meta name="author" content="FoodFun" />
-    
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="img/logo.png">
-  </head>
 
-  <body>
-    <header class="header">
-      <div class="container header-container">
-        <a href="index.html" class="logo">
-          <div class="logo-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
-          <span class="logo-text">Food<span class="text-orange">Fun</span></span>
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FoodFun Restaurant</title>
+  <meta name="description" content="Delicious food in a comfortable atmosphere" />
+  <meta name="author" content="FoodFun" />
 
-        <!-- Desktop Navigation -->
-        <nav class="desktop-nav">
-          <a href="index.html" class="nav-link active">Home</a>
-          <a href="menu.html" class="nav-link">Menu</a>
-          <a href="about.html" class="nav-link">About</a>
-          <a href="booking.html" class="nav-link">Booking</a>
-          <a href="contact.html" class="nav-link">Contact</a>
-        </nav>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="img/logo.png">
+</head>
 
-        <!-- Desktop Action Buttons -->
-        <div class="action-buttons">
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-          </button>
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path></svg>
-          </button>
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
-          </button>
+<body>
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white"
+              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
         </div>
+        <span class="logo-text">Food<span class="text-orange">Fun</span></span>
+      </a>
 
-        <!-- Mobile Menu Button -->
-        <button class="mobile-menu-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
-        </button>
-      </div>
-
-      <!-- Mobile Menu (hidden by default) -->
-      <div class="mobile-menu" id="mobileMenu">
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
         <a href="index.html" class="nav-link active">Home</a>
         <a href="menu.html" class="nav-link">Menu</a>
         <a href="about.html" class="nav-link">About</a>
         <a href="booking.html" class="nav-link">Booking</a>
         <a href="contact.html" class="nav-link">Contact</a>
-        
-        <div class="mobile-actions">
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-          </button>
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path></svg>
-          </button>
-          <button class="icon-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
+      </nav>
+
+      <!-- Desktop Action Buttons -->
+      <div class="action-buttons">
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+          <input 
+            type="text" 
+            id="menuSearch" 
+            class="search-input" 
+            placeholder="Search menu items..."
+            onclick="redirectToMenu()"
+          >
+          <button class="search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
           </button>
         </div>
+        
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
       </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container hero-container">
-        <!-- Left Content -->
-        <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="text-orange">ENJOY</span> OUR DELICIOUS
-            <br>
-            MEAL
-          </h1>
-          <p class="hero-description">
-            A Restaurant Is A Place Where People Go To Enjoy A Meal, 
-            Typically With Friends, Family, Or Colleagues.
+      <!-- Mobile Menu Button -->
+      <button class="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="booking.html" class="nav-link">Booking</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+
+      <div class="mobile-actions">
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path>
+          </svg>
+        </button>
+        <button class="icon-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
+            <circle cx="8" cy="21" r="1"></circle>
+            <circle cx="19" cy="21" r="1"></circle>
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <!-- Left Content -->
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="text-orange">ENJOY</span> OUR DELICIOUS
+          <br>
+          MEAL
+        </h1>
+        <p class="hero-description">
+          A Restaurant Is A Place Where People Go To Enjoy A Meal,
+          Typically With Friends, Family, Or Colleagues.
+        </p>
+        <div class="hero-cta">
+          <a href="booking.html" class="btn-primary">
+            BOOK A TABLE
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Content - Food Image -->
+      <div class="hero-image-container">
+        <div class="hero-image">
+          <img src="img/meal-image.png" alt="Delicious meal with chicken and salad" class="main-image animate-float">
+
+          <!-- Decorative Elements -->
+          <div class="decorative-element top-right">
+            <img src="img/red-chili.png" alt="Red chili">
+          </div>
+
+          <div class="decorative-element bottom-left">
+            <img src="img/herb-leaf.png" alt="Herb leaf">
+          </div>
+
+          <div class="decorative-element middle-left">
+            <img src="img/pepper.png" alt="Black pepper">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="container info-cards-container">
+      <div class="info-card">
+        <div class="info-card-content">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />
+              <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="info-title">Today 10:00 am - 7:00 pm</h3>
+            <p class="info-subtitle">Working Hours</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-content">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M19 10C19 16 12 21 12 21C12 21 5 16 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="info-title">Pune, Maharashtra - Loni Kalbhor, India</h3>
+            <p class="info-subtitle"><a href="https://maps.app.goo.gl/RG5MKuQsW1yhdzoC8">Get Direction</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-card-content">
+          <div class="info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M22 16.92V19.92C22 20.4704 21.7893 20.9982 21.4142 21.3982C21.0391 21.7983 20.5304 22.0428 20 22C16.83 22 13.7 21.1 10.9 19.37C8.66 17.99 6.61 16.33 4.89 14.34C3 11.63 2 8.6 2 5.48C1.87 4.82 2.21 4.2 2.56 3.74C2.86 3.33 3.3 3 3.81 3H6.8C7.49 3 8.05 3.47 8.23 4.16C8.41 4.85 8.63 5.55 8.89 6.23C9.08 6.68 8.89 7.2 8.64 7.53L7.4 8.82C9.03 11.27 11.16 13.48 13.59 15.15L14.87 13.84C15.14 13.56 15.61 13.41 16.08 13.55C16.75 13.79 17.43 13.97 18.1 14.09C18.74 14.25 19.27 14.87 19.27 15.57L22 16.92Z"
+                stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="info-title">+91 7041887184</h3>
+            <p class="info-subtitle">Call Online</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="hero-bg-pattern"></div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container features-container">
+      <!-- Left Side - Image -->
+      <div class="features-image">
+        <div class="image-wrapper">
+          <img src="img/shrimp-dish.png" alt="Delicious shrimp dish" class="main-feature-image">
+
+          <!-- Decorative elements -->
+          <div class="decorative-element bottom-left small">
+            <img src="img/herb-leaf.png" alt="Herb leaf">
+          </div>
+
+          <div class="decorative-element top-right medium">
+            <img src="img/red-chili.png" alt="Red chili">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Content -->
+      <div class="features-content">
+        <div class="section-header">
+          <h2 class="section-title">
+            Why people choose us?
+          </h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="features-list">
+          <!-- Feature 1 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z">
+                </path>
+                <line x1="6" x2="18" y1="17" y2="17"></line>
+              </svg>
+            </div>
+            <h3 class="feature-title">Master Chefs</h3>
+            <p class="feature-description">
+              Experience culinary excellence from our team of master chefs who combine creativity with
+              precision to create unforgettable dishes.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="21" r="1"></circle>
+                <circle cx="19" cy="21" r="1"></circle>
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
+              </svg>
+            </div>
+            <h3 class="feature-title">Quality Food</h3>
+            <p class="feature-description">
+              We source only the finest ingredients, ensuring every dish meets our exacting standards
+              for flavor, freshness, and presentation.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h3 class="feature-title">24/7 Service</h3>
+            <p class="feature-description">
+              Our dedicated staff is available around the clock to provide exceptional service,
+              catering to your needs whenever you desire.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Column 1 - About -->
+        <div class="footer-column">
+          <a href="index.html" class="logo">
+            <div class="logo-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <span class="logo-text">Food<span class="text-orange">Fun</span></span>
+          </a>
+          <p class="footer-text">
+            Delicious food in a comfortable atmosphere, creating memories with every bite.
           </p>
-          <div class="hero-cta">
-            <a href="booking.html" class="btn-primary">
-              BOOK A TABLE
+          <div class="social-links">
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                </path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z">
+                </path>
+                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+              </svg>
             </a>
           </div>
         </div>
 
-        <!-- Right Content - Food Image -->
-        <div class="hero-image-container">
-          <div class="hero-image">
-            <img src="img/meal-image.png" alt="Delicious meal with chicken and salad" class="main-image animate-float">
-            
-            <!-- Decorative Elements -->
-            <div class="decorative-element top-right">
-              <img src="img/red-chili.png" alt="Red chili">
-            </div>
-            
-            <div class="decorative-element bottom-left">
-              <img src="img/herb-leaf.png" alt="Herb leaf">
-            </div>
-            
-            <div class="decorative-element middle-left">
-              <img src="img/pepper.png" alt="Black pepper">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Info Cards -->
-      <div class="container info-cards-container">
-        <div class="info-card">
-          <div class="info-card-content">
-            <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2"/>
-                <path d="M12 6V12L16 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        <!-- Column 2 - Opening Hours -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Opening Hours</h3>
+          <ul class="footer-list">
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-            </div>
-            <div>
-              <h3 class="info-title">Today 10:00 am - 7:00 pm</h3>
-              <p class="info-subtitle">Working Hours</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-card-content">
-            <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M19 10C19 16 12 21 12 21C12 21 5 16 5 10C5 6.13401 8.13401 3 12 3C15.866 3 19 6.13401 19 10Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <div>
+                <p class="footer-info-title">Monday - Friday</p>
+                <p class="footer-info-subtitle">8:00 am - 9:00 pm</p>
+              </div>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-            </div>
-            <div>
-              <h3 class="info-title">Pune, Maharashtra - Loni Kalbhor, India</h3>
-              <p class="info-subtitle">Get Directions</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="info-card">
-          <div class="info-card-content">
-            <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M22 16.92V19.92C22 20.4704 21.7893 20.9982 21.4142 21.3982C21.0391 21.7983 20.5304 22.0428 20 22C16.83 22 13.7 21.1 10.9 19.37C8.66 17.99 6.61 16.33 4.89 14.34C3 11.63 2 8.6 2 5.48C1.87 4.82 2.21 4.2 2.56 3.74C2.86 3.33 3.3 3 3.81 3H6.8C7.49 3 8.05 3.47 8.23 4.16C8.41 4.85 8.63 5.55 8.89 6.23C9.08 6.68 8.89 7.2 8.64 7.53L7.4 8.82C9.03 11.27 11.16 13.48 13.59 15.15L14.87 13.84C15.14 13.56 15.61 13.41 16.08 13.55C16.75 13.79 17.43 13.97 18.1 14.09C18.74 14.25 19.27 14.87 19.27 15.57L22 16.92Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <div>
+                <p class="footer-info-title">Saturday</p>
+                <p class="footer-info-subtitle">8:00 am - 10:00 pm</p>
+              </div>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
-            </div>
-            <div>
-              <h3 class="info-title">+91 7041887184</h3>
-              <p class="info-subtitle">Call Online</p>
-            </div>
-          </div>
+              <div>
+                <p class="footer-info-title">Sunday</p>
+                <p class="footer-info-subtitle">9:00 am - 8:00 pm</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3 - Contact Info -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Contact Info</h3>
+          <ul class="footer-list">
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <p>Pune, Maharashtra - Loni Kalbhor, India</p>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
+              </svg>
+              <p>+91 7041887184</p>
+            </li>
+            <li class="footer-list-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="icon-small">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <p>foodfunenquiry@gmail.com</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4 - Newsletter -->
+        <div class="footer-column">
+          <h3 class="footer-heading">Newsletter</h3>
+          <p class="footer-text">
+            Subscribe to our newsletter for regular updates on special offers.
+          </p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your Email" class="newsletter-input">
+            <button class="btn-primary">Subscribe</button>
+          </form>
         </div>
       </div>
 
-      <!-- Background Decoration -->
-      <div class="hero-bg-pattern"></div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features">
-      <div class="container features-container">
-        <!-- Left Side - Image -->
-        <div class="features-image">
-          <div class="image-wrapper">
-            <img 
-              src="img/shrimp-dish.png" 
-              alt="Delicious shrimp dish" 
-              class="main-feature-image"
-            >
-            
-            <!-- Decorative elements -->
-            <div class="decorative-element bottom-left small">
-              <img src="img/herb-leaf.png" alt="Herb leaf">
-            </div>
-            
-            <div class="decorative-element top-right medium">
-              <img src="img/red-chili.png" alt="Red chili">
-            </div>
-          </div>
-        </div>
-        
-        <!-- Right Side - Content -->
-        <div class="features-content">
-          <div class="section-header">
-            <h2 class="section-title">
-              Why people choose us?
-            </h2>
-            <div class="section-divider"></div>
-          </div>
-          
-          <div class="features-list">
-            <!-- Feature 1 -->
-            <div class="feature-card">
-              <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"></path><line x1="6" x2="18" y1="17" y2="17"></line></svg>
-              </div>
-              <h3 class="feature-title">Master Chefs</h3>
-              <p class="feature-description">
-                Experience culinary excellence from our team of master chefs who combine creativity with
-                precision to create unforgettable dishes.
-              </p>
-            </div>
-            
-            <!-- Feature 2 -->
-            <div class="feature-card">
-              <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"></circle><circle cx="19" cy="21" r="1"></circle><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path></svg>
-              </div>
-              <h3 class="feature-title">Quality Food</h3>
-              <p class="feature-description">
-                We source only the finest ingredients, ensuring every dish meets our exacting standards
-                for flavor, freshness, and presentation.
-              </p>
-            </div>
-            
-            <!-- Feature 3 -->
-            <div class="feature-card">
-              <div class="feature-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
-              <h3 class="feature-title">24/7 Service</h3>
-              <p class="feature-description">
-                Our dedicated staff is available around the clock to provide exceptional service,
-                catering to your needs whenever you desire.
-              </p>
-            </div>
-          </div>
-        </div>
+      <!-- Copyright -->
+      <div class="copyright">
+        <p>© <span id="currentYear"></span> FoodFun. All Rights Reserved.</p>
       </div>
-    </section>
+    </div>
+  </footer>
 
-    <!-- Footer Section -->
-    <footer class="footer">
-      <div class="container footer-container">
-        <div class="footer-grid">
-          <!-- Column 1 - About -->
-          <div class="footer-column">
-            <a href="index.html" class="logo">
-              <div class="logo-icon">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <span class="logo-text">Food<span class="text-orange">Fun</span></span>
-            </a>
-            <p class="footer-text">
-              Delicious food in a comfortable atmosphere, creating memories with every bite.
-            </p>
-            <div class="social-links">
-              <a href="#" class="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-              </a>
-              <a href="#" class="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-              </a>
-              <a href="#" class="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-              </a>
-              <a href="#" class="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
-              </a>
-            </div>
-          </div>
-          
-          <!-- Column 2 - Opening Hours -->
-          <div class="footer-column">
-            <h3 class="footer-heading">Opening Hours</h3>
-            <ul class="footer-list">
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div>
-                  <p class="footer-info-title">Monday - Friday</p>
-                  <p class="footer-info-subtitle">8:00 am - 9:00 pm</p>
-                </div>
-              </li>
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div>
-                  <p class="footer-info-title">Saturday</p>
-                  <p class="footer-info-subtitle">8:00 am - 10:00 pm</p>
-                </div>
-              </li>
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <div>
-                  <p class="footer-info-title">Sunday</p>
-                  <p class="footer-info-subtitle">9:00 am - 8:00 pm</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Column 3 - Contact Info -->
-          <div class="footer-column">
-            <h3 class="footer-heading">Contact Info</h3>
-            <ul class="footer-list">
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <p>Pune, Maharashtra - Loni Kalbhor, India</p>
-              </li>
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <p>+91 7041887184</p>
-              </li>
-              <li class="footer-list-item">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-small"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-                <p>foodfunenquiry@gmail.com</p>
-              </li>
-            </ul>
-          </div>
-          
-          <!-- Column 4 - Newsletter -->
-          <div class="footer-column">
-            <h3 class="footer-heading">Newsletter</h3>
-            <p class="footer-text">
-              Subscribe to our newsletter for regular updates on special offers.
-            </p>
-            <form class="newsletter-form">
-              <input 
-                type="email" 
-                placeholder="Your Email" 
-                class="newsletter-input"
-              >
-              <button class="btn-primary">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        
-        <!-- Copyright -->
-        <div class="copyright">
-          <p>© <span id="currentYear"></span> FoodFun. All Rights Reserved.</p>
-        </div>
-      </div>
-    </footer>
+  <script src="script.js"></script>
+</body>
 
-    <script src="script.js"></script>
-  </body>
 </html>

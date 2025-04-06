@@ -79,3 +79,22 @@ document.addEventListener('DOMContentLoaded', animateOnScroll);
 
 // Scroll event for animations
 window.addEventListener('scroll', animateOnScroll);
+
+// Function to filter menu items
+function filterMenuItems() {
+  const searchInput = document.getElementById('menuSearch').value.toLowerCase();
+  const menuItems = document.querySelectorAll('.menu-item'); // Adjust selector based on your menu item class
+
+  menuItems.forEach(item => {
+    const itemText = item.textContent.toLowerCase();
+    if (itemText.includes(searchInput)) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+function redirectToMenu() {
+  window.location.href = "menu.html";
+}
