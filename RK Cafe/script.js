@@ -6,6 +6,9 @@ const currentYearElement = document.getElementById('currentYear');
 const toggleBtn = document.getElementById('darkModeToggle');
 const searchButtonIcon = document.querySelector('.search-button .icon');
 const featuresContent = document.querySelector('.features-content'); // Correct selector for the section
+const reviewForm = document.getElementById('reviewForm');
+const reviewInput = document.getElementById('reviewInput');
+const reviewsList = document.getElementById('reviewsList');
 
 // Set current year in footer
 currentYearElement.textContent = new Date().getFullYear();
@@ -135,4 +138,51 @@ window.addEventListener('DOMContentLoaded', () => {
     searchButtonIcon.style.stroke = '#000'; // Set icon color to black on page load
   }
 });
+
+// Customer Reviews Slider
+const reviewsSlider = document.querySelector('.reviews-slider');
+const reviewCards = document.querySelectorAll('.review-card');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+
+let currentIndex = 0;
+
+function updateSlider() {
+  const offset = -currentIndex * 100; // Calculate the offset for the slider
+  reviewsSlider.style.transform = `translateX(${offset}%)`;
+}
+
+prevBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex - 1 + reviewCards.length) % reviewCards.length; // Loop back to the last card
+  updateSlider();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentIndex = (currentIndex + 1) % reviewCards.length; // Loop back to the first card
+  updateSlider();
+});
+
+// Event Listener for Submitting Reviews
+reviewForm.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent form submission
+
+  const reviewText = reviewInput.value.trim(); // Get the review text
+  if (reviewText) {
+    addReview(reviewText); // Add the review to the list
+    reviewInput.value = ''; // Clear the input field
+  }
+});
+
+// Function to Add a Review
+function addReview(text) {
+  const reviewCard = document.createElement('div');
+  reviewCard.classList.add('review-card');
+
+  reviewCard.innerHTML = `
+    <p class="review-text">"${text}"</p>
+    <h3 class="review-author">- Anonymous</h3>
+  `;
+
+  reviewsList.prepend(reviewCard); // Add the new review to the top of the list
+}
 
