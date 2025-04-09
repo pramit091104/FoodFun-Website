@@ -4,11 +4,15 @@ const currentYearElement = document.getElementById('currentYear');
 const toggleBtn = document.getElementById('darkModeToggle');
 const searchButtonIcon = document.querySelector('.search-button .icon');
 const featuresContent = document.querySelector('.features-content'); // Correct selector for the section
-const reviewForm = document.getElementById('reviewForm');
-const reviewInput = document.getElementById('reviewInput');
-const reviewsList = document.getElementById('reviewsList');
 
+const cartSidebar = document.getElementById('cartSidebar');
+const closeCartSidebar = document.getElementById('closeCartSidebar');
+const cartItemsContainer = document.getElementById('cartItems');
+const cartTotalElement = document.getElementById('cartTotal');
+const checkoutButton = document.getElementById('checkoutButton');
 
+// Array to store cart items
+const cartItems = [];
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
@@ -108,50 +112,96 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Customer Reviews Slider
-const reviewsSlider = document.querySelector('.reviews-slider');
-const reviewCards = document.querySelectorAll('.review-card');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
 
-let currentIndex = 0;
 
-function updateSlider() {
-  const offset = -currentIndex * 100; // Calculate the offset for the slider
-  reviewsSlider.style.transform = `translateX(${offset}%)`;
+// Function to Add Item to Cart
+function addToCart(itemName, itemPrice) {
+  const item = { name: itemName, price: parseFloat(itemPrice) };
+  cartItems.push(item);
+  updateCart();
+  openCartSidebar(); // Open the cart sidebar when an item is added
 }
 
-prevBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex - 1 + reviewCards.length) % reviewCards.length; // Loop back to the last card
-  updateSlider();
-});
+// Function to Remove Item from Cart
+function removeFromCart(index) {
+  cartItems.splice(index, 1);
+  updateCart();
+}
 
-nextBtn.addEventListener('click', () => {
-  currentIndex = (currentIndex + 1) % reviewCards.length; // Loop back to the first card
-  updateSlider();
-});
+// Function to Update Cart
+function updateCart() {
+  const cartItemsContainer = document.getElementById('cartItems');
+  const cartTotalElement = document.getElementById('cartTotal');
 
-// Event Listener for Submitting Reviews
-reviewForm.addEventListener('submit', (event) => {
-  event.preventDefault(); // Prevent form submission
+  // Clear existing cart items
+  cartItemsContainer.innerHTML = '';
 
-  const reviewText = reviewInput.value.trim(); // Get the review text
-  if (reviewText) {
-    addReview(reviewText); // Add the review to the list
-    reviewInput.value = ''; // Clear the input field
+  // Add updated cart items
+  let total = 0;
+  cartItems.forEach((item, index) => {
+    total += item.price;
+
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+      <span class="item-name">${item.name}</span>
+      <span class="item-price">Rs: ${item.price.toFixed(2)}</span>
+      <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+    `;
+    cartItemsContainer.appendChild(cartItem);
+  });
+
+  // Update total price
+  cartTotalElement.textContent = total.toFixed(2);
+}
+
+// Function to Open Cart Sidebar
+function openCartSidebar() {
+  const cartSidebar = document.getElementById('cartSidebar');
+  cartSidebar.classList.add('visible'); // Add the 'visible' class to show the sidebar
+}
+
+// Function to Close Cart Sidebar
+function closeCartSidebarHandler() {
+  const cartSidebar = document.getElementById('cartSidebar');
+  cartSidebar.classList.remove('visible'); // Remove the 'visible' class to hide the sidebar
+}
+
+// Add Event Listeners for Cart Toggle and Close Buttons
+document.addEventListener('DOMContentLoaded', () => {
+  const cartToggleButton = document.getElementById('cartToggleButton');
+  const closeCartSidebar = document.getElementById('closeCartSidebar');
+
+  if (cartToggleButton) {
+    cartToggleButton.addEventListener('click', openCartSidebar);
+  } else {
+    console.error('Cart Toggle Button not found in the DOM.');
+  }
+
+  if (closeCartSidebar) {
+    closeCartSidebar.addEventListener('click', closeCartSidebarHandler);
+  } else {
+    console.error('Close Cart Sidebar button not found in the DOM.');
   }
 });
 
-// Function to Add a Review
-function addReview(text) {
-  const reviewCard = document.createElement('div');
-  reviewCard.classList.add('review-card');
+document.addEventListener('DOMContentLoaded', () => {
+  const checkoutButton = document.getElementById('checkoutButton');
 
-  reviewCard.innerHTML = `
-    <p class="review-text">"${text}"</p>
-    <h3 class="review-author">- Anonymous</h3>
-  `;
+  // Checkout Button Event Listener
+  checkoutButton.addEventListener('click', () => {
+    if (cartItems.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
 
-  reviewsList.prepend(reviewCard); // Add the new review to the top of the list
-}
+    alert('Thank you for your order!');
+    cartItems.length = 0; // Clear the cart
+    updateCart();
+    closeCartSidebarHandler(); // Close the cart sidebar
+  });
+});
+
+
+
 
