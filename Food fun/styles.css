@@ -179,6 +179,15 @@ img {
   align-items: center;
 }
 
+#login{
+  display: flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 2px;
+  border: none;
+}
+
+
 .logo {
   display: flex;
   align-items: center;

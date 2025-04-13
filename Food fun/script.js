@@ -202,6 +202,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+function loginbtn(){
+  window.location.href = "login.html";
+}
+
+
+
 
 
 
