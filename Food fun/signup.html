@@ -4,102 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | RK Food & Cafe</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="login_signup.css">
 </head>
 
 <body>
-    <style>
-        /* General Styling */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-image: url('img/restaurant\ image.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
 
-        /* Form Container */
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 30px;
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            width: 400px;
-            text-align: center;
-        }
 
-        /* Form Header */
-        h2 {
-            margin-bottom: 20px;
-            color: #e74c3c;
-            font-weight: 600;
-        }
-
-        /* Input Fields */
-        .input-group {
-            text-align: left;
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
-        }
-
-        input {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* Buttons */
-        .form-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-btn:hover {
-            background-color: #e74c3c;
-        }
-
-        /* Links */
-        .form-text {
-            margin-top: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .form-text a {
-            color: #e74c3c;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .form-text a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
-    <div class="form-container">
+    <div class="signup-container">
         <h2>Sign Up for Food fun</h2>
         <form action="#" method="POST">
             <div class="input-group">
@@ -114,18 +26,12 @@
                 <label for="password">Password:</label>
                 <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
             </div>
-            <button type="submit" class="form-btn" onclick="signUp()">Sign Up</button>
+            <button id="signup-btn" >Sign Up</button>
             <p class="form-text">Already have an account? <a href="login.html">Login</a></p>
         </form>
     </div>
-    
 
-
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
-    <script src="login_signup.js"></script>
-
-
+    <script src="signup.js"></script>
 </body>
 
 </html>

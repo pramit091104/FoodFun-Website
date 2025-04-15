@@ -1,0 +1,95 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('img/restaurant\ image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Form Container */
+.login-container, .form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+/* Form Header */
+h2 {
+    margin-bottom: 20px;
+    color: #e74c3c;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* Input Fields */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Buttons */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #c0392b;
+}
+
+/* Links */
+a {
+    color: #e74c3c;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.signup-link, .form-text {
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
