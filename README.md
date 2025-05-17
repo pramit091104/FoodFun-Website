@@ -1,2 +1,21 @@
 # Web Dev Project
  This is a Project Repo of my Web dev project
+
+FoodFun Restaurant Website
+A modern, responsive restaurant website for FoodFun, offering a complete digital presence for a dining establishment. This project features a clean, user-friendly interface with dark mode support and comprehensive functionality for restaurant operations.
+
+Features
+Interactive Menu System: Browse and search through restaurant offerings
+Table Booking System: Online reservation functionality
+Responsive Design: Optimized for all devices from mobile to desktop
+Dark/Light Mode Toggle: Enhanced user experience with theme options
+User Authentication: Login and signup functionality
+Location Integration: Map directions and contact information
+Beautiful UI: Modern design with smooth animations and intuitive navigation
+Technologies Used
+HTML5
+CSS3 with responsive design principles
+Vanilla JavaScript for interactive elements
+SVG icons for crisp, scalable graphics
+Google Fonts integration
+This project demonstrates front-end web development skills with a focus on creating an engaging, functional restaurant website that enhances the dining experience both online and offline.
