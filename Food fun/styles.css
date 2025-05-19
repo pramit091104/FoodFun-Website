@@ -1079,7 +1079,7 @@ hr {
 
 .dark-toggle-btn {
   position: fixed;
-  top: 2.5rem;
+  top: 1.3rem;
   right: 1rem;
   background-color: var(--btn-bg);
   color: var(--btn-text);
