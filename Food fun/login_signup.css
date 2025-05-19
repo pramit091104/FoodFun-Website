@@ -1,7 +1,7 @@
 /* General Styling */
 body {
     font-family: 'Poppins', sans-serif;
-    background: url('img/restaurant\ image.jpg') no-repeat center center fixed;
+    background: url('img/restaurant\ image.jpg') no-repeat center center fixed loading="lazy";
     background-size: cover;
     display: flex;
     justify-content: center;
