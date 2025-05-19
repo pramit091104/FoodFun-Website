@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scal</div>e=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - FoodFun Restaurant</title>
-  <meta name="description" content="Learn about our restaurant's story" />
+  <meta name="description" content="Learn about FoodFun Restaurant" />
   <meta name="author" content="FoodFun" />
 
   <link
@@ -62,12 +62,10 @@
     }
 
     .section-image {
-
       width: 100%;
     }
 
     @media (min-width: 768px) {
-
       .section-image,
       .section-content {
         width: 50%;
@@ -212,66 +210,63 @@
       padding: 80px 0;
       color: var(--gray-medium);
     }
+
+    .review-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .reviews-list {
+      margin-top: 30px;
+    }
+
+    .review-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .review-author {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .review-date {
+      color: var(--gray-medium);
+      font-size: 0.9rem;
+    }
+
+    .review-content {
+      margin-top: 10px;
+    }
+
+    .user-info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="container header-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white"
-              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <span class="logo-text">Food<span class="text-orange">Fun</span></span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="menu.html" class="nav-link">Menu</a>
-        <a href="about.html" class="nav-link active">About</a>
-        <a href="booking.html" class="nav-link">Booking</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-
-      <!-- Desktop Action Buttons -->
-      <div class="action-buttons">
-        <div class="search-bar-container">
-          <input type="text" id="menuSearch" class="search-input" placeholder="Search menu items..."
-            onclick="redirectToMenu()">
-          <button class="search-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
-        </div>
-
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-            <path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path>
-          </svg>
-        </button>
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-            <circle cx="8" cy="21" r="1"></circle>
-            <circle cx="19" cy="21" r="1"></circle>
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-          </svg>
-        </button>
-        <button id="darkModeToggle" class="dark-toggle-btn">🌙 Toggle Dark Mode</button>
-
-      </div>
-
-
+  <div id="header"></div> <!-- Header will be loaded here -->
     
-  </header>
 
   <section class="page-header">
     <div class="container">
@@ -281,7 +276,7 @@
         </h1>
         <div class="section-divider"></div>
         <p class="page-description">
-          Discover our passion for exceptional food and memorable dining experiences
+          Learn more about our story and what makes us special.
         </p>
       </div>
     </div>
@@ -457,6 +452,10 @@
     <div class="container">
       <h2 class="section-title" style="text-align: center; margin-bottom: 40px;">What Our Customers Say</h2>
 
+      <div id="userInfo" class="user-info">
+        <!-- User info will be populated by JavaScript -->
+      </div>
+
       <!-- Review Form -->
       <form id="reviewForm" class="review-form">
         <textarea id="reviewInput" class="review-input" placeholder="Write your review here..." required></textarea>
@@ -622,6 +621,103 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Dynamically load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+  <script>
+    // Check if user is logged in
+    window.onload = function() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      const userInfoDiv = document.getElementById('userInfo');
+      const reviewForm = document.getElementById('reviewForm');
+      const reviewsList = document.getElementById('reviewsList');
+      
+      if (currentUser) {
+        userInfoDiv.innerHTML = `
+          <div class="user-details">
+            <p><strong>Name:</strong> ${currentUser.name}</p>
+            <p><strong>Email:</strong> ${currentUser.email}</p>
+          </div>
+        `;
+      } else {
+        userInfoDiv.innerHTML = '<p>Please <a href="login.html">login</a> to leave a review</p>';
+        reviewForm.style.display = 'none';
+      }
+
+      // Load existing reviews
+      const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+      displayReviews(reviews);
+
+      // Handle review submission
+      reviewForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        if (!currentUser) {
+          alert('Please login to leave a review');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        const reviewText = document.getElementById('reviewInput').value.trim();
+        
+        if (!reviewText) {
+          alert('Please write a review');
+          return;
+        }
+
+        const review = {
+          user: currentUser,
+          text: reviewText,
+          timestamp: new Date().toISOString()
+        };
+
+        // Add review to local storage
+        reviews.push(review);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+
+        // Display updated reviews
+        displayReviews(reviews);
+
+        // Clear form
+        document.getElementById('reviewInput').value = '';
+      });
+    };
+
+    // Display reviews
+    function displayReviews(reviews) {
+      const reviewsList = document.getElementById('reviewsList');
+      reviewsList.innerHTML = '';
+
+      reviews.forEach(review => {
+        const reviewElement = document.createElement('div');
+        reviewElement.className = 'review-item';
+        reviewElement.innerHTML = `
+          <div class="review-author">${review.user.name}</div>
+          <div class="review-date">${new Date(review.timestamp).toLocaleDateString()}</div>
+          <div class="review-content">${review.text}</div>
+        `;
+        reviewsList.appendChild(reviewElement);
+      });
+    }
+
+    // Handle login button
+    function handleLogin() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      if (currentUser) {
+        sessionStorage.removeItem('currentUser');
+        window.location.reload();
+      } else {
+        window.location.href = 'login.html';
+      }
+    }
+
+    window.onload = checkLoginStatus;
+  </script>
 </body>
 
 </html>

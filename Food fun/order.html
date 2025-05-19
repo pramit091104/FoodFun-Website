@@ -53,16 +53,14 @@
     </style>
 </head>
 <body>
-
+  <div id="header"></div> <!-- Header will be loaded here -->
     <div class="container">
         <h2>Order Your Food</h2>
 
         <!-- User Credentials -->
-        <label for="name">Full Name:</label>
-        <input type="text" id="name" placeholder="Enter your name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Enter your email" required>
+        <div id="userInfo">
+            <!-- User info will be populated by JavaScript -->
+        </div>
 
         <label for="address">Address:</label>
         <input type="text" id="address" placeholder="Enter your address" required>
@@ -71,16 +69,16 @@
 
         <!-- Food Menu -->
         <div class="menu-item">
-            <label>🍕 Chicken Pizza - $8.99</label>
-            <input type="number" id="pizza" value="0" min="0">
+            <label for="pizza">🍕 Chicken Pizza - $8.99</label>
+            <input type="number" id="pizza" value="0" min="0" placeholder="Quantity">
         </div>
         <div class="menu-item">
-            <label>🍔 Chicken Burger - $5.99</label>
-            <input type="number" id="burger" value="0" min="0">
+            <label for="burger">🍔 Chicken Burger - $5.99</label>
+            <input type="number" id="burger" value="0" min="0" placeholder="Quantity">
         </div>
         <div class="menu-item">
-            <label>🥤 Chicken Pasta - $7.99</label>
-            <input type="number" id="drink" value="0" min="0">
+            <label for="drink">🥤 Chicken Pasta - $7.99</label>
+            <input type="number" id="drink" value="0" min="0" placeholder="Quantity">
         </div>
 
         <button onclick="placeOrder()">Place Order</button>
@@ -90,35 +88,65 @@
     </div>
 
     <script>
+        // Check if user is logged in
+        window.onload = function() {
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            const userInfoDiv = document.getElementById('userInfo');
+            
+            if (currentUser) {
+                userInfoDiv.innerHTML = `
+                    <div class="user-details">
+                        <p><strong>Name:</strong> ${currentUser.name}</p>
+                        <p><strong>Email:</strong> ${currentUser.email}</p>
+                    </div>
+                `;
+            } else {
+                alert('Please login to place an order');
+                window.location.href = 'login.html';
+            }
+        };
+
         function placeOrder() {
-            let name = document.getElementById("name").value;
-            let email = document.getElementById("email").value;
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            if (!currentUser) {
+                alert('Please login to place an order');
+                window.location.href = 'login.html';
+                return;
+            }
+
             let address = document.getElementById("address").value;
             let pizzaQty = parseInt(document.getElementById("pizza").value);
             let burgerQty = parseInt(document.getElementById("burger").value);
             let drinkQty = parseInt(document.getElementById("drink").value);
 
-            let total = (pizzaQty * 200) + (burgerQty * 100) + (drinkQty * 50);
+            let total = (pizzaQty * 8.99) + (burgerQty * 5.99) + (drinkQty * 7.99);
 
-            if (!name || !email || !address || total === 0) {
-                alert("Please enter valid details and select at least one item.");
+            if (!address || total === 0) {
+                alert("Please enter valid address and select at least one item.");
                 return;
             }
 
             let orderSummary = `
-                Name: ${name} <br>
-                Email: ${email} <br>
+                Name: ${currentUser.name} <br>
+                Email: ${currentUser.email} <br>
                 Address: ${address} <br>
                 🍕 Pizza: ${pizzaQty} <br>
                 🍔 Burger: ${burgerQty} <br>
-                🥤 Cold Drink: ${drinkQty} <br>
-                <b>Total: ₹${total}</b>
+                🥤 Pasta: ${drinkQty} <br>
+                <b>Total: $${total.toFixed(2)}</b>
             `;
 
             document.getElementById("order-summary").innerHTML = orderSummary;
             alert("Order placed successfully!");
         }
     </script>
-
+  <script>
+    // Dynamically load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
 </body>
 </html>

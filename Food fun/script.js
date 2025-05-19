@@ -11,8 +11,56 @@ const cartItemsContainer = document.getElementById('cartItems');
 const cartTotalElement = document.getElementById('cartTotal');
 const checkoutButton = document.getElementById('checkoutButton');
 
-// Array to store cart items
-const cartItems = [];
+// Array to store cart items (persisted per user)
+let cartItems = [];
+
+// --- Search Bar Filtering Everywhere ---
+function setupSearchBarFiltering() {
+  // The header may be loaded dynamically, so wait until it's present
+  const observer = new MutationObserver(() => {
+    const searchInput = document.getElementById('menuSearch');
+    if (searchInput && !searchInput.hasAttribute('data-search-handler')) {
+      searchInput.addEventListener('input', filterMenuItems);
+      searchInput.setAttribute('data-search-handler', 'true');
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+  // Also try to attach immediately in case header is already present
+  window.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('menuSearch');
+    if (searchInput && !searchInput.hasAttribute('data-search-handler')) {
+      searchInput.addEventListener('input', filterMenuItems);
+      searchInput.setAttribute('data-search-handler', 'true');
+    }
+  });
+}
+setupSearchBarFiltering();
+
+function getCartKey() {
+  const userStr = sessionStorage.getItem('currentUser');
+  if (!userStr) return null;
+  const user = JSON.parse(userStr);
+  return `cartItems_${user.email}`;
+}
+
+function loadCart() {
+  const key = getCartKey();
+  if (!key) {
+    cartItems = [];
+    return;
+  }
+  const saved = sessionStorage.getItem(key);
+  cartItems = saved ? JSON.parse(saved) : [];
+}
+
+function saveCart() {
+  const key = getCartKey();
+  if (!key) return;
+  sessionStorage.setItem(key, JSON.stringify(cartItems));
+}
+
+// Load cart on page load
+window.addEventListener('DOMContentLoaded', loadCart);
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
@@ -73,58 +121,162 @@ function filterMenuItems() {
   });
 }
 
-function redirectToMenu() {
-  window.location.href = "menu.html";
+
+
+function loginbtn(){
+  window.location.href = "login.html";
 }
 
-toggleBtn.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-  const header = document.querySelector('.header');
-  header.classList.toggle('dark'); // Add dark mode styling to the header
+document.addEventListener('DOMContentLoaded', () => {
+  // DARK MODE THEME LOAD
+  // Add smooth transition for theme changes
+  document.documentElement.style.transition = 'background-color 0.3s, color 0.3s';
+  if (featuresContent) featuresContent.style.transition = 'background-color 0.3s, color 0.3s';
+  const headerEl = document.querySelector('.header');
+  if (headerEl) headerEl.style.transition = 'background-color 0.3s, color 0.3s';
 
-  // Change the search icon color
-  if (document.documentElement.classList.contains('dark')) {
-    searchButtonIcon.style.stroke = '#fff'; // Set icon color to white in dark mode
-  } else {
-    searchButtonIcon.style.stroke = '#000'; // Set icon color to black in light mode
-  }
-
-  // Optional: Save user preference in localStorage
-  if (document.documentElement.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-});
-
-// Load saved theme on page load
-window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('theme') === 'dark') {
-    document.documentElement.classList.add('dark');
-    const header = document.querySelector('.header');
-    header.classList.add('dark'); // Ensure header is in dark mode on page load
-    searchButtonIcon.style.stroke = '#fff'; // Set icon color to white on page load
-    if (featuresContent) {
-      featuresContent.classList.add('dark'); // Ensure section is in dark mode on page load
+  // Helper to update UI for theme
+  function applyTheme(theme) {
+    if (theme === 'dark') {
+      document.body.classList.add('dark');
+      if (headerEl) headerEl.classList.add('dark');
+      if (typeof updateSearchIconsColor === 'function') {
+        updateSearchIconsColor('#fff');
+      } else if (typeof searchButtonIcon !== 'undefined' && searchButtonIcon) {
+        searchButtonIcon.style.stroke = '#fff';
+      }
+      if (featuresContent) featuresContent.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+      if (headerEl) headerEl.classList.remove('dark');
+      if (typeof updateSearchIconsColor === 'function') {
+        updateSearchIconsColor('#000');
+      } else if (typeof searchButtonIcon !== 'undefined' && searchButtonIcon) {
+        searchButtonIcon.style.stroke = '#000';
+      }
+      if (featuresContent) featuresContent.classList.remove('dark');
     }
-  } else {
-    searchButtonIcon.style.stroke = '#000'; // Set icon color to black on page load
+    // Update toggle button icon/text if desired
+    const toggleBtn = document.getElementById('darkModeToggle');
+    if (toggleBtn) {
+      toggleBtn.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
   }
+
+  // On load, apply saved theme
+  const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
+  applyTheme(savedTheme);
+
+  // DARK MODE TOGGLE
+  const toggleBtn = document.getElementById('darkModeToggle');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      const theme = isDark ? 'dark' : 'light';
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    });
+  }
+
+  // CART BUTTONS
+  const cartButtons = document.querySelectorAll(".icon-button[title='Cart']");
+  cartButtons.forEach(btn => btn.addEventListener('click', openCartSidebar));
+  const closeCartSidebar = document.getElementById('closeCartSidebar');
+  if (closeCartSidebar) {
+    closeCartSidebar.addEventListener('click', closeCartSidebarHandler);
+  }
+
+  // CHECKOUT BUTTON
+  const checkoutButton = document.getElementById('checkoutButton');
+  if (checkoutButton) {
+    checkoutButton.addEventListener('click', () => {
+      if (cartItems.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      alert('Thank you for your order!');
+      cartItems.length = 0; // Clear the cart
+      saveCart();
+      updateCart();
+      closeCartSidebarHandler(); // Close the cart sidebar
+    });
+  }
+
+  // ANIMATION ON SCROLL
+  animateOnScroll();
+
+  // Display current user profile in header
+  displayUserProfile();
 });
 
+// Function to display user profile in header
+function displayUserProfile() {
+  const header = document.querySelector('.header .header-container');
+  if (!header) return;
+
+  // Remove existing user profile if any
+  const oldProfile = document.getElementById('userProfileBox');
+  if (oldProfile) oldProfile.remove();
+
+  const userStr = sessionStorage.getItem('currentUser');
+  if (userStr) {
+    const user = JSON.parse(userStr);
+    // Create profile box
+    const profileBox = document.createElement('div');
+    profileBox.id = 'userProfileBox';
+    profileBox.className = 'user-profile-box';
+    profileBox.innerHTML = `
+      <span class="user-avatar">👤</span>
+      <span class="user-name">${user.email || user.name || 'User'}</span>
+      <button id="logoutBtn" class="logout-btn" title="Logout">Logout</button>
+    `;
+    // Insert before dark mode toggle if exists, else at end
+    const darkToggle = document.getElementById('darkModeToggle');
+    if (darkToggle) {
+      header.insertBefore(profileBox, darkToggle);
+    } else {
+      header.appendChild(profileBox);
+    }
+    // Logout functionality
+    document.getElementById('logoutBtn').onclick = function() {
+      // Remove user-specific cart
+      const userStr = sessionStorage.getItem('currentUser');
+      if (userStr) {
+        const user = JSON.parse(userStr);
+        sessionStorage.removeItem(`cartItems_${user.email}`);
+      }
+      sessionStorage.removeItem('currentUser');
+      window.location.reload();
+    };
+  }
+}
 
 
 // Function to Add Item to Cart
 function addToCart(itemName, itemPrice) {
+  // Check if user is logged in
+  const currentUser = sessionStorage.getItem('currentUser');
+  if (!currentUser) {
+    // Not logged in: ask to login
+    if (confirm('You must be logged in to add items to cart. Do you want to login now?')) {
+      // Redirect to login page
+      window.location.href = 'login.html';
+    }
+    return;
+  }
+  // User is logged in
   const item = { name: itemName, price: parseFloat(itemPrice) };
   cartItems.push(item);
+  saveCart();
   updateCart();
   openCartSidebar(); // Open the cart sidebar when an item is added
 }
 
+
 // Function to Remove Item from Cart
 function removeFromCart(index) {
   cartItems.splice(index, 1);
+  saveCart();
   updateCart();
 }
 
@@ -166,48 +318,3 @@ function closeCartSidebarHandler() {
   const cartSidebar = document.getElementById('cartSidebar');
   cartSidebar.classList.remove('visible'); // Remove the 'visible' class to hide the sidebar
 }
-
-// Add Event Listeners for Cart Toggle and Close Buttons
-document.addEventListener('DOMContentLoaded', () => {
-  const cartToggleButton = document.getElementById('cartToggleButton');
-  const closeCartSidebar = document.getElementById('closeCartSidebar');
-
-  if (cartToggleButton) {
-    cartToggleButton.addEventListener('click', openCartSidebar);
-  } else {
-    console.error('Cart Toggle Button not found in the DOM.');
-  }
-
-  if (closeCartSidebar) {
-    closeCartSidebar.addEventListener('click', closeCartSidebarHandler);
-  } else {
-    console.error('Close Cart Sidebar button not found in the DOM.');
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const checkoutButton = document.getElementById('checkoutButton');
-
-  // Checkout Button Event Listener
-  checkoutButton.addEventListener('click', () => {
-    if (cartItems.length === 0) {
-      alert('Your cart is empty!');
-      return;
-    }
-
-    alert('Thank you for your order!');
-    cartItems.length = 0; // Clear the cart
-    updateCart();
-    closeCartSidebarHandler(); // Close the cart sidebar
-  });
-});
-
-function loginbtn(){
-  window.location.href = "login.html";
-}
-
-
-
-
-
-

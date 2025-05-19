@@ -90,70 +90,19 @@
     .booking-form .btn-primary:hover {
       background-color: #e65c00;
     }
+
+    .user-info {
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 
 <body>
-  <header class="header">
-    <div class="container header-container">
-      <a href="index.html" class="logo">
-        <div class="logo-icon">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 12H14M4 12V6C4 3.79086 5.79086 2 8 2C10.2091 2 12 3.79086 12 6V12" stroke="white"
-              strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <span class="logo-text">Food<span class="text-orange">Fun</span></span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <nav class="desktop-nav">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="menu.html" class="nav-link">Menu</a>
-        <a href="about.html" class="nav-link">About</a>
-        <a href="booking.html" class="nav-link active">Booking</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-
-      <!-- Desktop Action Buttons -->
-      <div class="action-buttons">
-        <div class="search-bar-container">
-          <input 
-            type="text" 
-            id="menuSearch" 
-            class="search-input" 
-            placeholder="Search menu items..."
-            onclick="redirectToMenu()"
-          >
-          <button class="search-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
-        </div>
-        
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-            <path d="M18 20a2 2 0 0 0 2-2V8l-8-6-8 6v10a2 2 0 0 0 2 2zM2 8h20M12 3v7"></path>
-          </svg>
-        </button>
-        <button class="icon-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon">
-            <circle cx="8" cy="21" r="1"></circle>
-            <circle cx="19" cy="21" r="1"></circle>
-            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"></path>
-          </svg>
-        </button>
-        <button id="darkModeToggle" class="dark-toggle-btn">🌙 Toggle Dark Mode</button>
-      </div>
-
-  
-    </div>
-  </header>
-
+  <div id="header"></div> <!-- Header will be loaded here -->
+    
   <section class="page-header">
     <div class="container">
       <div class="page-header-content">
@@ -168,22 +117,10 @@
 
       <div class="coming-soon">
         <div class="booking-form-wrapper">
-          <form class="booking-form">
-            <div class="form-group">
-              <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" placeholder="Enter your name" required />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" required />
-            </div>
-
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
-            </div>
-
+          <div id="userInfo" class="user-info">
+            <!-- User info will be populated by JavaScript -->
+          </div>
+          <form class="booking-form" id="bookingForm">
             <div class="form-group">
               <label for="date">Date</label>
               <input type="date" id="date" name="date" required />
@@ -204,7 +141,7 @@
               <textarea id="message" name="message" rows="4" placeholder="Any special instructions?"></textarea>
             </div>
 
-            <button type="submit" class="btn-primary">Reserve Table</button>
+            <button type="submit" class="btn-primary">Book Table</button>
           </form>
         </div>
       </div>
@@ -363,6 +300,130 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    // Dynamically load header
+    fetch('header.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('header').innerHTML = data;
+      });
+  </script>
+  <script>
+    // Check if user is logged in
+    window.onload = function() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      const userInfoDiv = document.getElementById('userInfo');
+      const bookingForm = document.getElementById('bookingForm');
+      
+      if (currentUser) {
+        userInfoDiv.innerHTML = `
+          <div class="user-details">
+            <p><strong>Name:</strong> ${currentUser.name}</p>
+            <p><strong>Email:</strong> ${currentUser.email}</p>
+          </div>
+        `;
+      } else {
+        alert('Please login to book a table');
+        window.location.href = 'login.html';
+      }
+
+      // Handle form submission
+      bookingForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const people = document.getElementById('people').value;
+        const message = document.getElementById('message').value;
+
+        if (!date || !time || !people) {
+          alert('Please fill in all required fields');
+          return;
+        }
+
+        const booking = {
+          user: currentUser,
+          date: date,
+          time: time,
+          people: people,
+          message: message
+        };
+
+        // Store booking in local storage
+        const bookings = JSON.parse(localStorage.getItem('bookings')) || [];
+        bookings.push(booking);
+        localStorage.setItem('bookings', JSON.stringify(bookings));
+
+        // Send Gmail notification
+        sendBookingEmail(booking);
+
+        alert('Table booked successfully!');
+        window.location.href = 'index.html';
+      });
+
+      // Function to send booking email
+      function sendBookingEmail(booking) {
+        const emailData = {
+          to: currentUser.email,
+          subject: 'Table Booking Confirmation - FoodFun Restaurant',
+          body: `
+            Dear ${currentUser.name},
+            
+            Your table has been successfully booked at FoodFun Restaurant.
+            
+            Booking Details:
+            - Date: ${booking.date}
+            - Time: ${booking.time}
+            - Number of People: ${booking.people}
+            ${booking.message ? `- Special Request: ${booking.message}` : ''}
+            
+            Thank you for choosing FoodFun Restaurant!
+            
+            Best regards,
+            FoodFun Team
+          `
+        };
+
+        // Send email using Gmail API
+        fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + getGmailToken(),
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            raw: btoa(
+              `To: ${emailData.to}\r\n` +
+              `Subject: ${emailData.subject}\r\n` +
+              `Content-Type: text/plain; charset=UTF-8\r\n\r\n` +
+              emailData.body
+            ).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+          })
+        })
+        .then(response => response.json())
+        .then(data => console.log('Email sent:', data))
+        .catch(error => console.error('Error sending email:', error));
+      }
+
+      // Function to get Gmail OAuth token
+      function getGmailToken() {
+        // This is a placeholder - you'll need to implement proper OAuth2 authentication
+        // You can use Google's OAuth2 client library for this
+        return 'YOUR_GMAIL_ACCESS_TOKEN';
+      }
+    };
+
+    // Handle login button
+    function handleLogin() {
+      const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+      if (currentUser) {
+        sessionStorage.removeItem('currentUser');
+        window.location.reload();
+      } else {
+        window.location.href = 'login.html';
+      }
+    }
+  </script>
 </body>
 
 </html>
