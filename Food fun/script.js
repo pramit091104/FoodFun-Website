@@ -23,7 +23,7 @@ function setupSearchBarFiltering() {
       searchInput.addEventListener('input', filterMenuItems);
       searchInput.setAttribute('data-search-handler', 'true');
     }
-  });
+  }); // <-- Close the arrow function here
   observer.observe(document.body, { childList: true, subtree: true });
   // Also try to attach immediately in case header is already present
   window.addEventListener('DOMContentLoaded', () => {
@@ -127,67 +127,15 @@ function loginbtn(){
   window.location.href = "login.html";
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // DARK MODE THEME LOAD
-  // Add smooth transition for theme changes
-  document.documentElement.style.transition = 'background-color 0.3s, color 0.3s';
-  if (featuresContent) featuresContent.style.transition = 'background-color 0.3s, color 0.3s';
-  const headerEl = document.querySelector('.header');
-  if (headerEl) headerEl.style.transition = 'background-color 0.3s, color 0.3s';
-
-  // Helper to update UI for theme
-  function applyTheme(theme) {
-    if (theme === 'dark') {
-      document.body.classList.add('dark');
-      if (headerEl) headerEl.classList.add('dark');
-      if (typeof updateSearchIconsColor === 'function') {
-        updateSearchIconsColor('#fff');
-      } else if (typeof searchButtonIcon !== 'undefined' && searchButtonIcon) {
-        searchButtonIcon.style.stroke = '#fff';
-      }
-      if (featuresContent) featuresContent.classList.add('dark');
-    } else {
-      document.body.classList.remove('dark');
-      if (headerEl) headerEl.classList.remove('dark');
-      if (typeof updateSearchIconsColor === 'function') {
-        updateSearchIconsColor('#000');
-      } else if (typeof searchButtonIcon !== 'undefined' && searchButtonIcon) {
-        searchButtonIcon.style.stroke = '#000';
-      }
-      if (featuresContent) featuresContent.classList.remove('dark');
-    }
-    // Update toggle button icon/text if desired
-    const toggleBtn = document.getElementById('darkModeToggle');
-    if (toggleBtn) {
-      toggleBtn.textContent = theme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-  }
-
-  // On load, apply saved theme
-  const savedTheme = localStorage.getItem('theme') === 'dark' ? 'dark' : 'light';
-  applyTheme(savedTheme);
-
-  // DARK MODE TOGGLE
-  const toggleBtn = document.getElementById('darkModeToggle');
-  if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      const isDark = document.body.classList.toggle('dark');
-      const theme = isDark ? 'dark' : 'light';
-      localStorage.setItem('theme', theme);
-      applyTheme(theme);
-    });
-  }
 
   // CART BUTTONS
   const cartButtons = document.querySelectorAll(".icon-button[title='Cart']");
   cartButtons.forEach(btn => btn.addEventListener('click', openCartSidebar));
-  const closeCartSidebar = document.getElementById('closeCartSidebar');
   if (closeCartSidebar) {
     closeCartSidebar.addEventListener('click', closeCartSidebarHandler);
   }
 
   // CHECKOUT BUTTON
-  const checkoutButton = document.getElementById('checkoutButton');
   if (checkoutButton) {
     checkoutButton.addEventListener('click', () => {
       if (cartItems.length === 0) {
@@ -207,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Display current user profile in header
   displayUserProfile();
-});
+
 
 // Function to display user profile in header
 function displayUserProfile() {
