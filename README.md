@@ -1,5 +1,5 @@
 # Web Dev Project
- This is a Project Repo of my Web dev project
+ This is a Project Repo of my First Web dev project. I made it as Macro Project for my College lab project.
 
 # FoodFun Restaurant Website
 A modern, responsive restaurant website for FoodFun, offering a complete digital presence for a dining establishment. This project features a clean, user-friendly interface with dark mode support and comprehensive functionality for restaurant operations.
@@ -18,4 +18,11 @@ CSS3 with responsive design principles
 Vanilla JavaScript for interactive elements
 SVG icons for crisp, scalable graphics
 Google Fonts integration
+
+## Future Advancements
+
+- Integrate **Tailwind CSS** for utility-first styling.
+- Enhance the user interface for a better user experience.
+- Add more interactive features and UI improvements
+
 This project demonstrates front-end web development skills with a focus on creating an engaging, functional restaurant website that enhances the dining experience both online and offline.

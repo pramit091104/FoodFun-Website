@@ -180,7 +180,7 @@ function displayUserProfile() {
     `;
     // Insert before dark mode toggle if exists, else at end
     const darkToggle = document.getElementById('darkModeToggle');
-    if (darkToggle) {
+    if (darkToggle) { 
       header.insertBefore(profileBox, darkToggle);
     } else {
       header.appendChild(profileBox);
