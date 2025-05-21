@@ -2,6 +2,33 @@
 const header = document.querySelector('.header');
 const currentYearElement = document.getElementById('currentYear');
 const toggleBtn = document.getElementById('darkModeToggle');
+
+// --- Dark Mode Functionality ---
+function setDarkMode(enabled) {
+  if (enabled) {
+    document.body.classList.add('dark-mode');
+    if (toggleBtn) toggleBtn.innerHTML = '☀️ Light Mode';
+    localStorage.setItem('darkMode', 'enabled');
+  } else {
+    document.body.classList.remove('dark-mode');
+    if (toggleBtn) toggleBtn.innerHTML = '🌙 Dark Mode';
+    localStorage.setItem('darkMode', 'disabled');
+  }
+}
+
+function toggleDarkMode() {
+  const isDark = document.body.classList.contains('dark-mode');
+  setDarkMode(!isDark);
+}
+
+// Set initial mode on load
+window.addEventListener('DOMContentLoaded', () => {
+  const darkPref = localStorage.getItem('darkMode');
+  setDarkMode(darkPref === 'enabled');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleDarkMode);
+  }
+});
 const searchButtonIcon = document.querySelector('.search-button .icon');
 const featuresContent = document.querySelector('.features-content'); // Correct selector for the section
 
@@ -64,6 +91,7 @@ window.addEventListener('DOMContentLoaded', loadCart);
 
 // Header scroll effect
 window.addEventListener('scroll', () => {
+  if (!header) return;
   if (window.scrollY > 10) {
     header.classList.add('scrolled');
   } else {

@@ -20,6 +20,91 @@
   --icon-color: #000; /* Default icon color for light mode */
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #181818;
+  color: #f1f1f1;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Text and links */
+body.dark-mode a { color: #ffffff; }
+body.dark-mode h1, 
+body.dark-mode h2, 
+body.dark-mode h3, 
+body.dark-mode h4, 
+body.dark-mode h5, 
+body.dark-mode h6 {
+  color: #ffffff;
+}
+body.dark-mode .text-orange {
+  color: var(--orange-light);
+}
+
+/* Containers and backgrounds */
+body.dark-mode .container {
+  background: #181818;
+}
+body.dark-mode .hero,
+body.dark-mode .features,
+body.dark-mode .testimonials,
+body.dark-mode .footer {
+  background-color: #181818;
+}
+body.dark-mode .footer {
+  border-top: 1px solid #333;
+}
+
+/* Cards and boxes */
+body.dark-mode .user-profile-box,
+body.dark-mode .feature-card,
+body.dark-mode .info-card,
+body.dark-mode .menu-card,
+body.dark-mode .testimonial-card {
+  background: #222;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Form elements */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .search-input {
+  background: #333;
+  color: #f1f1f1;
+  border-color: #444;
+}
+body.dark-mode .search-button .icon {
+  stroke: #000000;
+}
+
+/* Header and navigation */
+body.dark-mode .header {
+  background-color: #181818;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+body.dark-mode .header.scrolled {
+  background-color: #1a1a1a;
+}
+body.dark-mode .nav-link {
+  color: #f1f1f1;
+}
+body.dark-mode .nav-link:hover {
+  color: var(--orange-light);
+}
+
+/* Buttons */
+body.dark-mode .icon-button {
+  background-color: #333;
+  color: #f1f1f1;
+}
+body.dark-mode .icon-button:hover {
+  background-color: #444;
+}
+body.dark-mode .icon-button .icon {
+  stroke: #f1f1f1;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   color: var(--gray-dark);
@@ -216,8 +301,9 @@ img {
 }
 
 .header-container {
+  gap: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 

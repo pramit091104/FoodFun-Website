@@ -11,7 +11,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
-    <link rel="icon" href="img/logo.png">
+  <link rel="icon" href="img/logo.png">
   <link rel="stylesheet" href="styles.css">
   <style>
     /* Additional page-specific styles */
@@ -66,6 +66,7 @@
     }
 
     @media (min-width: 768px) {
+
       .section-image,
       .section-content {
         width: 50%;
@@ -266,7 +267,7 @@
 
 <body>
   <div id="header"></div> <!-- Header will be loaded here -->
-    
+
 
   <section class="page-header">
     <div class="container">
@@ -631,12 +632,12 @@
   </script>
   <script>
     // Check if user is logged in
-    window.onload = function() {
+    window.onload = function () {
       const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
       const userInfoDiv = document.getElementById('userInfo');
       const reviewForm = document.getElementById('reviewForm');
       const reviewsList = document.getElementById('reviewsList');
-      
+
       if (currentUser) {
         userInfoDiv.innerHTML = `
           <div class="user-details">
@@ -654,9 +655,9 @@
       displayReviews(reviews);
 
       // Handle review submission
-      reviewForm.addEventListener('submit', function(event) {
+      reviewForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        
+
         if (!currentUser) {
           alert('Please login to leave a review');
           window.location.href = 'login.html';
@@ -664,7 +665,7 @@
         }
 
         const reviewText = document.getElementById('reviewInput').value.trim();
-        
+
         if (!reviewText) {
           alert('Please write a review');
           return;
@@ -717,7 +718,24 @@
     }
 
     window.onload = checkLoginStatus;
+
+
+    // Toggle dark mode on all pages
+    document.getElementById('darkModeToggle').onclick = function () {
+      document.body.classList.toggle('dark-mode');
+      // Optionally, save preference
+      if (document.body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    };
+    // On page load, apply saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+    }
   </script>
+
 </body>
 
 </html>
