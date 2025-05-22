@@ -383,31 +383,6 @@
       .then(response => response.text())
       .then(data => {
         document.getElementById('header').innerHTML = data;
-        // Initialize dark mode after header is loaded
-        const darkPref = localStorage.getItem('darkMode');
-        const toggleBtn = document.getElementById('darkModeToggle');
-        
-        if (darkPref === 'enabled') {
-          document.body.classList.add('dark-mode');
-          if (toggleBtn) toggleBtn.innerHTML = '☀️ Light Mode';
-        } else {
-          if (toggleBtn) toggleBtn.innerHTML = '🌙 Dark Mode';
-        }
-        
-        if (toggleBtn) {
-          toggleBtn.addEventListener('click', function() {
-            const isDark = document.body.classList.contains('dark-mode');
-            if (isDark) {
-              document.body.classList.remove('dark-mode');
-              this.innerHTML = '🌙 Dark Mode';
-              localStorage.setItem('darkMode', 'disabled');
-            } else {
-              document.body.classList.add('dark-mode');
-              this.innerHTML = '☀️ Light Mode';
-              localStorage.setItem('darkMode', 'enabled');
-            }
-          });
-        }
       });
   </script>
 </body>

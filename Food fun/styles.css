@@ -859,7 +859,7 @@ img {
 
 /* Customer Reviews Section */
 .customer-reviews {
-  background-color: var(--white);
+  background-color: var(--btn-text);
   padding: 60px 20px;
   margin-top: 40px;
   box-shadow: var(--shadow-sm);
