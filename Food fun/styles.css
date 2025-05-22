@@ -61,7 +61,7 @@ body.dark-mode .feature-card,
 body.dark-mode .info-card,
 body.dark-mode .menu-card,
 body.dark-mode .testimonial-card {
-  background: #222;
+  background: #181818;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
@@ -95,7 +95,7 @@ body.dark-mode .nav-link:hover {
 
 /* Buttons */
 body.dark-mode .icon-button {
-  background-color: #333;
+  background-color: #181818;
   color: #f1f1f1;
 }
 body.dark-mode .icon-button:hover {
@@ -141,7 +141,7 @@ img {
 /* Layout */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -309,12 +309,12 @@ img {
 
 #login{
   cursor: pointer;
-  background-color: transparent;
+  background-color: white;
   display: flex;
   align-items: center;
   padding: 3px 10px;
   border-radius: 23px;
-  border: 2px solid black;
+  border: 2px solid rgb(255, 255, 255);
 }
 
 
@@ -1022,7 +1022,7 @@ slider-controls {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: var(--gray-light);
+  background-color: var(--black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1030,8 +1030,8 @@ slider-controls {
 }
 
 .social-link:hover {
-  background-color: var(--orange);
-  color: var(--white);
+  background-color: var(--black);
+  color: var(--orange);
 }
 
 .footer-list {
@@ -1058,6 +1058,16 @@ slider-controls {
 .footer-info-subtitle {
   color: var(--gray-medium);
   font-size: 0.875rem;
+}
+
+/* Dark mode styles for footer text */
+.dark-mode .footer-heading,
+.dark-mode .footer-info-title,
+.dark-mode .footer-info-subtitle,
+.dark-mode .footer-list-item,
+.dark-mode .footer-list-item p,
+.dark-mode .footer-text {
+  color: var(--white);
 }
 
 .newsletter-form {
@@ -1118,6 +1128,7 @@ slider-controls {
   --link-color: #ff9e2c;
   --divider-color: #333;
   --icon-color: #fff; /* Icon color for dark mode */
+  --footer-text-color: #ffffff; /* Footer text color for dark mode */
 }
 
 /* Apply variables globally */
