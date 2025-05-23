@@ -5,6 +5,7 @@
 A modern, responsive restaurant website for FoodFun, offering a complete digital presence for a dining establishment. This project features a clean, user-friendly interface with dark mode support and comprehensive functionality for restaurant operations.
 
 # Features
+- **Firebase Auth**: Firebase Auth for User logging Authentication.
 - **Interactive Menu System**: Browse and search through restaurant offerings.
 - **Table Booking System**: Online reservation functionality.
 - **Responsive Design**: Optimized for all devices from mobile to desktop.
