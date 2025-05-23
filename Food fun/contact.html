@@ -394,13 +394,21 @@
 
       <!-- Copyright -->
       <div class="copyright">
-        <p>© <span id="currentYear"></span> FoodFun. All Rights Reserved.</p>
+        <p>  <span id="currentYear"></span> FoodFun. All Rights Reserved.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Add EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("wJXZI1RI-EMo2dnpj"); // Your EmailJS user ID (public key)
+    })();
+  </script>
   <script src="script.js"></script>
   <script>
+
     // Dynamically load header
     fetch('header.html')
       .then(response => response.text())
@@ -408,6 +416,7 @@
         document.getElementById('header').innerHTML = data;
       });
   </script>
+  
   <script>
     // Check if user is logged in
     window.onload = function() {
@@ -433,26 +442,58 @@
         
         const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
+        const submitBtn = document.querySelector('.submit-button');
+        const successMsg = document.getElementById('formSuccess');
 
         if (!subject || !message) {
           alert('Please fill in all fields');
           return;
         }
 
-        const contactMessage = {
-          user: currentUser,
+        // Disable submit button to prevent multiple submissions
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
+
+        // Prepare email parameters
+        const templateParams = {
+          from_name: `${currentUser.name} (via FoodFun Website)`,
+          from_email: currentUser.email,
+          to_email: 'pramit.0904@gmail.com',
           subject: subject,
           message: message,
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toLocaleString()
         };
+        // Send email using EmailJS
+        emailjs.send('service_0x2hn6q', 'template_lspdmdb', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            
+            // Store message in local storage
+            const contactMessage = {
+              user: currentUser,
+              subject: subject,
+              message: message,
+              timestamp: new Date().toISOString()
+            };
+            
+            const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
+            messages.push(contactMessage);
+            localStorage.setItem('contactMessages', JSON.stringify(messages));
 
-        // Store message in local storage
-        const messages = JSON.parse(localStorage.getItem('contactMessages')) || [];
-        messages.push(contactMessage);
-        localStorage.setItem('contactMessages', JSON.stringify(messages));
-
-        alert('Message sent successfully!');
-        window.location.href = 'index.html';
+            // Show success message
+            successMsg.style.display = 'block';
+            contactForm.reset();
+            
+            // Redirect after 2 seconds
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 2000);
+          }, function(error) {
+            console.error('FAILED...', error);
+            alert('Failed to send message. Please try again later.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Message';
+          });
       });
     };
 
