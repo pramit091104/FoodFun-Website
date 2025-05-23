@@ -5,14 +5,14 @@
 A modern, responsive restaurant website for FoodFun, offering a complete digital presence for a dining establishment. This project features a clean, user-friendly interface with dark mode support and comprehensive functionality for restaurant operations.
 
 # Features
-**Interactive Menu System**: Browse and search through restaurant offerings.
-**Table Booking System**: Online reservation functionality.
-**Responsive Design**: Optimized for all devices from mobile to desktop.
-**Dark/Light Mode Toggle**: Enhanced user experience with theme options.
-**User Authentication**: Login and signup functionality.
-**Location Integration**: Map directions and contact information.
-**Email Sending for Contact enquiry**: Sends an email to your registered email.
-**Beautiful UI**: Modern design with smooth animations and intuitive navigation.
+Interactive Menu System: Browse and search through restaurant offerings.
+Table Booking System: Online reservation functionality.
+Responsive Design: Optimized for all devices from mobile to desktop.
+Dark/Light Mode Toggle: Enhanced user experience with theme options.
+User Authentication: Login and signup functionality.
+Location Integration: Map directions and contact information.
+Email Sending for Contact enquiry: Sends an email to your registered email.
+Beautiful UI: Modern design with smooth animations and intuitive navigation.
 
 # Technologies Used
 HTML5.
