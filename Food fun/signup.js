@@ -1,11 +1,14 @@
-// signup logic
-document.getElementById('signup-btn').addEventListener('click', function (event) {
+// Firebase Authentication for signup
+import { auth, createUserWithEmailAndPassword, updateProfile } from './firebase-config.js';
+
+document.getElementById('signup-btn').addEventListener('click', async function(event) {
     event.preventDefault(); // Prevent form from submitting normally
 
     const name = document.getElementById("signup-name").value.trim();
     const email = document.getElementById("signup-email").value.trim();
     const password = document.getElementById("signup-password").value.trim();
     const errorMessageDiv = document.getElementById('error-message');
+    const signupButton = document.getElementById('signup-btn');
 
     // Basic validation
     if (!name || !email || !password) {
@@ -26,28 +29,48 @@ document.getElementById('signup-btn').addEventListener('click', function (event)
         return;
     }
 
-    const user = {
-        name: name,
-        email: email,
-        password: password
-    };
-
-    const users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Check if the email is already registered
-    const userExists = users.some(u => u.email === email);
-    if (userExists) {
-        errorMessageDiv.textContent = "Email is already registered.";
-        return;
-    }
-
-    // Store user in local storage
-    users.push(user);
-    localStorage.setItem('users', JSON.stringify(users));
-
-    // Store current user in session storage
-    sessionStorage.setItem('currentUser', JSON.stringify(user));
-
+    // Disable button and show loading state
+    signupButton.disabled = true;
+    signupButton.textContent = "Creating account...";
     errorMessageDiv.textContent = "";
-    window.location.href = "index.html"; // Redirect to home and auto-login
+
+    try {
+        // Create user with Firebase Authentication
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+        
+        // Update user profile with display name
+        await updateProfile(user, {
+            displayName: name
+        });
+        
+        // Store user data in session storage for compatibility with existing code
+        const userData = {
+            name: name,
+            email: email,
+            uid: user.uid
+        };
+        sessionStorage.setItem('currentUser', JSON.stringify(userData));
+        
+        // Redirect to home page
+        window.location.href = "index.html";
+    } catch (error) {
+        let errorMessage = "An error occurred. Please try again.";
+        switch(error.code) {
+            case 'auth/email-already-in-use':
+                errorMessage = "Email is already registered.";
+                break;
+            case 'auth/invalid-email':
+                errorMessage = "Invalid email format.";
+                break;
+            case 'auth/weak-password':
+                errorMessage = "Password is too weak. Use at least 6 characters.";
+                break;
+        }
+        errorMessageDiv.textContent = errorMessage;
+        
+        // Reset button
+        signupButton.disabled = false;
+        signupButton.textContent = "Sign Up";
+    }
 });

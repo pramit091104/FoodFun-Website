@@ -185,6 +185,21 @@ function loginbtn(){
   displayUserProfile();
 
 
+// Import Firebase auth functions if script is loaded as a module
+let auth, signOut;
+try {
+  import('./firebase-config.js')
+    .then(module => {
+      auth = module.auth;
+      signOut = module.signOut;
+    })
+    .catch(error => {
+      console.error('Error importing Firebase modules:', error);
+    });
+} catch (error) {
+  console.log('Running in non-module context');
+}
+
 // Function to display user profile in header
 function displayUserProfile() {
   const header = document.querySelector('.header .header-container');
@@ -214,15 +229,27 @@ function displayUserProfile() {
       header.appendChild(profileBox);
     }
     // Logout functionality
-    document.getElementById('logoutBtn').onclick = function() {
-      // Remove user-specific cart
-      const userStr = sessionStorage.getItem('currentUser');
-      if (userStr) {
-        const user = JSON.parse(userStr);
-        sessionStorage.removeItem(`cartItems_${user.email}`);
+    document.getElementById('logoutBtn').onclick = async function() {
+      try {
+        // Try to sign out with Firebase if available
+        if (auth && signOut) {
+          await signOut(auth);
+        }
+        // Remove user-specific cart
+        const userStr = sessionStorage.getItem('currentUser');
+        if (userStr) {
+          const user = JSON.parse(userStr);
+          sessionStorage.removeItem(`cartItems_${user.email}`);
+        }
+        // Clear session storage regardless of Firebase availability
+        sessionStorage.removeItem('currentUser');
+        window.location.reload();
+      } catch (error) {
+        console.error('Error during logout:', error);
+        // Fallback to traditional logout if Firebase fails
+        sessionStorage.removeItem('currentUser');
+        window.location.reload();
       }
-      sessionStorage.removeItem('currentUser');
-      window.location.reload();
     };
   }
 }
