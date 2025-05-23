@@ -19,6 +19,8 @@ A modern, responsive restaurant website for FoodFun, offering a complete digital
 - HTML5.
 - CSS3 with responsive design principles.
 - Vanilla JavaScript for interactive elements.
+- Firebase Auth for User logging authentication.
+- EmailJs for Sending emails
 - SVG icons for crisp, scalable graphics.
 - Google Fonts integration.
 
