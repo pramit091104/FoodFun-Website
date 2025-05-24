@@ -1,7 +1,7 @@
-# Web Dev Project
- This is a Project Repo of my First Web dev project. I made it as Macro Project for my College lab project.
+# FoodFun Website
+ This is a Repo of my First Web dev project. I made it as a Macro Project in my College.
 
-# FoodFun Restaurant Website
+# About the Website
 A modern, responsive restaurant website for FoodFun, offering a complete digital presence for a dining establishment. This project features a clean, user-friendly interface with dark mode support and comprehensive functionality for restaurant operations.
 
 # Features
